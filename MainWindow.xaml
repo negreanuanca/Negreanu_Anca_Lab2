@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Negreanu_Anca_Lab2"
         mc:Ignorable="d"
         Title="Virtual Doughnuts Factory" ResizeMode="NoResize" Height="450" Width="800">
-    <Grid x:Name="frmMain"  Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
+    <Grid MenuItem.Click="FilledItemsShow_Click">
+        <Grid x:Name="frmMain"  Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
         <Label x:Name="lblTitle" Content="Doughnuts - Bake &amp; Sale" HorizontalAlignment="Left" Margin="226,10,0,0" VerticalAlignment="Top" Height="37" Width="310" FontSize="24" FontFamily="Arial" FontWeight="Bold"/>
         <GroupBox x:Name="gbRaised" Header="Raised" Margin="135,52,436,252" FontWeight="Bold">
             <Canvas Margin="0,0,-2,0">
@@ -20,7 +21,7 @@
             <Canvas Margin="2,0,-2,0">
                 <TextBox x:Name="txtLemonFilled" Canvas.Left="81" Canvas.Top="10" Text="0" TextWrapping="Wrap" Width="120" IsReadOnly="True"/>
                 <Label x:Name="lblChocolateFilled" Content="Chocolate" Canvas.Left="10" Canvas.Top="32" FontWeight="Normal"/>
-                <Label x:Name="txtVanillaFilled" Content="Vanilla" Canvas.Left="10" Canvas.Top="61" RenderTransformOrigin="0.5,0.5" FontWeight="Normal">
+                <Label x:Name="txtVanillaFilled1" Content="Vanilla" Canvas.Left="10" Canvas.Top="61" RenderTransformOrigin="0.5,0.5" FontWeight="Normal">
                     <Label.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -32,7 +33,7 @@
                 </Label>
                 <Label x:Name="lblLemonFilled" Content="Lemon" Canvas.Left="10" Canvas.Top="4" FontWeight="Normal"/>
                 <TextBox x:Name="txtChocolateFilled" Canvas.Left="81" Canvas.Top="38" Text="0" TextWrapping="Wrap" Width="120" IsReadOnly="True"/>
-                <TextBox x:Name="txtVanillaFilled1" Canvas.Left="81" Canvas.Top="67" Text="0" TextWrapping="Wrap" Width="120" IsReadOnly="True"/>
+                <TextBox x:Name="txtVanillaFilled" Canvas.Left="81" Canvas.Top="67" Text="0" TextWrapping="Wrap" Width="120" IsReadOnly="True"/>
             </Canvas>
         </GroupBox>
         <GroupBox x:Name="gbSale" Header="CurrentSale" Margin="83,191,96,21" FontWeight="Bold">
@@ -56,19 +57,23 @@
         <Menu x:Name="mnuMain" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top"
 Width="131" Margin="34,18,0,0">
             <MenuItem Header="File">
-                <MenuItem Header="Exit"/>
+                <MenuItem Header="Exit" Click="exitMenuItem_Click"/>
             </MenuItem>
             <MenuItem Header="_Doughnuts">
                 <MenuItem Header="Make">
                     <MenuItem Header="Raised">
-                        <MenuItem x:Name="glazedMenuItem" Header="Glazed"/>
-                        <MenuItem x:Name="sugarMenuItem" Header="Sugar"/>
+                        <MenuItem x:Name="glazedMenuItem" Header="Glazed" Click="glazedMenuItem_Click" IsCheckable="True"/>
+                        <MenuItem x:Name="sugarMenuItem" Header="Sugar" Click="sugarMenuItem_Click" IsCheckable="True"/>
                     </MenuItem>
-                    <MenuItem Header="Filled"/>
+                    <MenuItem Header="Filled">
+                        <MenuItem x:Name="lemonMenuItem" Header="Lemon" Click="lemonMenuTitem_Click" IsCheckable="True"/>
+                        <MenuItem x:Name="chocolateMenuItem" Header="Chocolate" Click="chocolateMenuItem_Click" IsCheckable="True"/>
+                        <MenuItem x:Name="vanillaMenuItem" Header="Vanilla" Click="vanillaMenuItem_Click"/>
+                    </MenuItem>
                 </MenuItem>
                 <MenuItem Header="Stop"></MenuItem>
             </MenuItem>
         </Menu>
-
+        </Grid>
     </Grid>
 </Window>
